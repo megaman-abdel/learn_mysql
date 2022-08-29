@@ -17,6 +17,7 @@ with connect(
     port=32006,
     user=input("Enter username: "),
     password=getpass("Enter password: "),
+    autocommit=False
 ) as connection:
     with connection.cursor() as cursor:
 
@@ -26,4 +27,4 @@ with connect(
             for shard in glob.glob(f"{TARGET_DIR}/{d}/*.csv"):
                 query = construct_import_query(shard)
                 cursor.execute(query)
-        
+                connection.commit()
