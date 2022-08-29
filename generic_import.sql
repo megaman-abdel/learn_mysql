@@ -1,0 +1,5 @@
+LOAD DATA LOCAL INFILE '<IN_FILE>'
+INTO TABLE dtm_live.test_crd
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS (gib, timestamp, createdAt, data);
